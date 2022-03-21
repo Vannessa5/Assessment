@@ -9,6 +9,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogConfigurationException;
 import org.apache.commons.logging.LogFactory;
 
 
@@ -18,7 +19,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class TestURLString extends TestCase {
 
-  private static Log logR = LogFactory.getLog(TestURLString.class);
+   private static Log logR = LogFactory.getLog(TestURLString.class) ;
   
   private static String testUrl =
     "http://myuser:mypassword@localhost:8888//url";

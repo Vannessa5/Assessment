@@ -3,9 +3,8 @@
  */
 package com.adaptris.interview;
 
-import java.net.InetAddress;
-import java.net.URL;
-import java.net.UnknownHostException;
+import java.io.IOException;
+import java.net.*;
 
 /**
  * A Simple URL parser, that can parse any given URL into it's constituent
@@ -18,7 +17,7 @@ import java.net.UnknownHostException;
  * 
  * @author $Author: lchan $
  */
-public class URLString {
+public class URLString<Url> {
 
   private String fullURL = null;
   private String protocol;
@@ -40,6 +39,7 @@ public class URLString {
    * @param url the URL
    */
   public URLString(URL url) {
+
     this(url.toString());
   }
 
@@ -119,6 +119,8 @@ public class URLString {
    * @return the port
    */
   public int getPort() {
+
+
     return port;
   }
 
@@ -145,7 +147,13 @@ public class URLString {
    * 
    * @return the url reference
    */
-  public String getRef() {
+  public String getRef() throws IOException {
+    URL url = new URL("");
+    URLConnection connection = url.openConnection( );
+    String mimeType = connection.getContentType( );
+    Object contents = url.getRef();
+    System.out.println("Url reference is  : "+ contents);
+    System.out.println("The mime type is : "+mimeType);
     return ref;
   }
 
